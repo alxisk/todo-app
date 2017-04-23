@@ -1,11 +1,18 @@
 import React from 'react';
 
 class App extends React.Component {
-
+  constructor() {
+    super();
+    this.state = {
+      allIs: 'ok'
+    };
+  }
 
   render() {
     return (
-      <div>OK</div>
-    )
+      <div>{this.state.allIs}</div>
+    );
   }
 }
+
+export default App;

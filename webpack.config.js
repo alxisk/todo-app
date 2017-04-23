@@ -3,7 +3,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  context: path.resolve(__dirname, './src'),
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -13,24 +12,45 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/, use: {
-          loader: 'babel-loader',
-          options: {}
-        }
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['react', 'es2015', 'env']
+            }
+          },
+          {
+            loader: 'eslint-loader',
+            options: {
+
+            }
+          }
+        ]
       }
     ]
   },
 
+  devtool: 'cheap-module-inline-source-map',
+
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Simple todo app'
-    })
+      title: 'Simple todo app',
+      filename: 'index.html',
+      template: './src/index.html',
+      inject: 'body'
+    }),
+    new webpack.NoEmitOnErrorsPlugin()
   ],
 
   devServer: {
     contentBase: path.join(__dirname, "build"),
     compress: true,
-    port: 8080
+    port: 8080,
+    overlay: {
+      warnings: true
+    }
   }
 }
 
