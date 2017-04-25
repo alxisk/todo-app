@@ -24,7 +24,7 @@ const config = {
           {
             loader: 'eslint-loader',
             options: {
-
+              emitWarning: true
             }
           }
         ]
@@ -47,10 +47,7 @@ const config = {
   devServer: {
     contentBase: path.join(__dirname, "build"),
     compress: true,
-    port: 8080,
-    overlay: {
-      warnings: true
-    }
+    port: 8080
   }
 }
 
