@@ -19,11 +19,11 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     event.persist();
-    let entries = this.state.entries;
-    let newEntryId = entries.length ? entries[entries.length - 1].id + 1 : 1;
-    let entryText = event.target.entry.value;
+    const entries = this.state.entries;
+    const newEntryId = entries.length ? entries[entries.length - 1].id + 1 : 1;
+    const entryText = event.target.entry.value;
     this.setState(prevState =>
-      prevState.entries.push( {id: newEntryId, text: entryText} )
+      prevState.entries.push({ id: newEntryId, text: entryText })
     );
     event.target.entry.value = '';
   }

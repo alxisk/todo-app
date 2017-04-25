@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function ListItem(props) {
   return (
@@ -7,3 +8,7 @@ export default function ListItem(props) {
     </div>
   );
 }
+
+ListItem.propTypes = {
+  text: PropTypes.string.isRequired
+};

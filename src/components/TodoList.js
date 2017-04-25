@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ListItem from './ListItem';
 
 export default function TodoList(props) {
@@ -9,3 +10,7 @@ export default function TodoList(props) {
     </div>
   );
 }
+
+TodoList.propTypes = {
+  entries: PropTypes.arrayOf(PropTypes.object).isRequired
+};
