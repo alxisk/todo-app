@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function AppTitle(props) {
   return (
-    <h1>{props.title}</h1>
+    <h1 className="app__title">{props.title}</h1>
   );
 }
 

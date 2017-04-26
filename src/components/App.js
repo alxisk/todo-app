@@ -30,10 +30,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <AppTitle title={`Simple todo app (${this.state.entries.length})`} />
-        <InputForm onsubmit={this.handleSubmit} />
-        <TodoList entries={this.state.entries} />
+      <div className="app">
+        <div className="center-wrap app__center-wrap">
+          <AppTitle title={`Simple todo app (${this.state.entries.length})`} />
+          <InputForm onsubmit={this.handleSubmit} />
+          <TodoList entries={this.state.entries} />
+        </div>
       </div>
     );
   }

@@ -1,0 +1,20 @@
+.todo-list {
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__list-item {
+    margin: 0 auto;
+    margin-bottom: 5px;
+    padding: 0 10px;
+    width: 500px;
+    font-size: 14px;
+    line-height: 14px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    color: black;
+    background: lightgrey;
+  }
+}

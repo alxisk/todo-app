@@ -4,9 +4,11 @@ import ListItem from './ListItem';
 
 export default function TodoList(props) {
   return (
-    <div>
-      {props.entries.map(entry =>
-        <ListItem key={entry.id} text={entry.text} />)}
+    <div className="todo-list">
+      <ul className="todo-list__list">
+        {props.entries.map(entry =>
+          <ListItem key={entry.id} text={entry.text} />)}
+      </ul>
     </div>
   );
 }

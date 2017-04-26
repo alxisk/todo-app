@@ -1,0 +1,41 @@
+.input-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+
+  & input[name="entry"] {
+    flex: 0 1 auto;
+    margin-right: 30px;
+    padding: 10px 15px;
+    width: 250px;
+    font-family: 'verdana', sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    background: darkgrey;
+    outline: none;
+
+    &:focus {
+      background: lightgrey;
+      box-shadow: 0 0 10px rgba(255, 255, 255, .7);
+    }
+  }
+
+  &__btn {
+    flex: 0 1 auto;
+    width: 50px;
+    font-size: 30px;
+    line-height: 30px;
+    color: darkgreen;
+    background: darkgrey;
+
+    &:hover {
+      box-shadow: 0 0 15px rgba(255, 255, 255, .7);
+    }
+
+    &:active {
+      box-shadow: 0 0 10px rgba(255, 255, 255, .6);
+    }
+  }
+}

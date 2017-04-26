@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 export default function InputForm(props) {
   return (
-    <form className="InputForm" onSubmit={props.onsubmit}>
+    <form className="input-form" onSubmit={props.onsubmit}>
       <input type="text" name="entry" />
-      <button>+</button>
+      <button className="btn input-form__btn">+</button>
     </form>
   );
 }
