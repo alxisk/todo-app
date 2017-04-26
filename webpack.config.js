@@ -28,11 +28,32 @@ const config = {
             }
           }
         ]
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       }
     ]
   },
 
-  devtool: 'cheap-module-inline-source-map',
+  devtool: 'cheap-module-source-map',
 
   plugins: [
     new HtmlWebpackPlugin({
