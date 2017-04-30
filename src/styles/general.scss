@@ -12,8 +12,8 @@ html {
 }
 
 body {
-  background: black;
-  color: lightgreen;
+  background: #f4f4f4;
+  color: $text-black;
 }
 
 a {
@@ -28,7 +28,7 @@ a {
 }
 
 .btn {
-  border: 2px solid grey;
-  border-radius: 5px;
+  border: none;
+  border-radius: 10px;
   outline: none;
 }

@@ -32,9 +32,9 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="center-wrap app__center-wrap">
-          <AppTitle title={`Simple todo app (${this.state.entries.length})`} />
+          <AppTitle title={'Simple todo app'} />
           <InputForm onsubmit={this.handleSubmit} />
-          <TodoList entries={this.state.entries} />
+          <TodoList entries={this.state.entries} taskCount={this.state.entries.length} />
         </div>
       </div>
     );

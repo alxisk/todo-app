@@ -5,7 +5,7 @@ export default function InputForm(props) {
   return (
     <form className="input-form" onSubmit={props.onsubmit}>
       <input type="text" name="entry" />
-      <button className="btn input-form__btn">+</button>
+      <button className="btn input-form__btn">+ Add</button>
     </form>
   );
 }

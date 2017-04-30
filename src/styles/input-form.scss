@@ -4,38 +4,38 @@
   margin-bottom: 30px;
 
   & input[name="entry"] {
-    flex: 0 1 auto;
-    margin-right: 30px;
+    flex: 0 1 36%;
+    margin-right: 2%;
     padding: 10px 15px;
-    width: 250px;
-    font-family: 'verdana', sans-serif;
+    font-family: $font-main;
     font-size: 16px;
     line-height: 16px;
-    border: 2px solid grey;
-    border-radius: 5px;
-    background: darkgrey;
+    border: 1px solid $lightgrey;
+    border-radius: 10px;
+    background: $white;
     outline: none;
 
     &:focus {
-      background: lightgrey;
-      box-shadow: 0 0 10px rgba(255, 255, 255, .7);
+      background: white;
     }
   }
 
   &__btn {
     flex: 0 1 auto;
-    width: 50px;
-    font-size: 30px;
-    line-height: 30px;
-    color: darkgreen;
-    background: darkgrey;
+    padding: 0 11px;
+    font-family: $font-main;
+    font-size: 20px;
+    line-height: 24px;
+    border: 1px solid $green;
+    color: $text-black;
+    background: lighten($green, 35%);
 
     &:hover {
-      box-shadow: 0 0 15px rgba(255, 255, 255, .7);
+      background: lighten($green, 25%);
     }
 
     &:active {
-      box-shadow: 0 0 10px rgba(255, 255, 255, .6);
+      background: lighten($green, 17%);
     }
   }
 }
