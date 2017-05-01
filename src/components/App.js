@@ -20,13 +20,14 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     event.persist();
+    const entryText = event.target.entry.value;
+    event.target.entry.value = '';
+    if (!entryText.trim()) return;
     const entries = this.state.entries;
     const newEntryId = entries.length ? entries[entries.length - 1].id + 1 : 1;
-    const entryText = event.target.entry.value;
     this.setState(prevState =>
       prevState.entries.push({ id: newEntryId, text: entryText })
     );
-    event.target.entry.value = '';
   }
 
   handleRemove(event) {
