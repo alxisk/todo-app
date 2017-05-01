@@ -32,4 +32,43 @@ a {
   border: none;
   border-radius: 10px;
   outline: none;
+
+  &--green {
+    border: 1px solid $green;
+    background: lighten($green, 35%);
+
+    &:hover {
+      background: lighten($green, 25%);
+    }
+
+    &:active {
+      background: lighten($green, 17%);
+    }
+  }
+
+  &--blue {
+    border: 1px solid $blue;
+    background: lighten($blue, 35%);
+
+    &:hover {
+      background: lighten($blue, 25%);
+    }
+
+    &:active {
+      background: lighten($blue, 15%);
+    }
+  }
+
+  &--red {
+    border: 1px solid $red;
+    background: lighten($red, 35%);
+
+    &:hover {
+      background: lighten($red, 25%);
+    }
+
+    &:active {
+      background: lighten($red, 15%);
+    }
+  }
 }

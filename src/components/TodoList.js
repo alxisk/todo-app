@@ -8,7 +8,8 @@ export default function TodoList(props) {
       <p className="todo-list__tasks-count">Tasks: {props.taskCount}</p>
       <ul className="todo-list__list">
         {props.entries.map(entry =>
-          <ListItem key={entry.id} text={entry.text} />)}
+          <ListItem key={entry.id} id={entry.id} text={entry.text}
+            handleRemove={props.handleRemove}/>)}
       </ul>
     </div>
   );

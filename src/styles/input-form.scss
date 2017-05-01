@@ -26,16 +26,6 @@
     font-family: $font-main;
     font-size: 20px;
     line-height: 24px;
-    border: 1px solid $green;
     color: $text-black;
-    background: lighten($green, 35%);
-
-    &:hover {
-      background: lighten($green, 25%);
-    }
-
-    &:active {
-      background: lighten($green, 17%);
-    }
   }
 }

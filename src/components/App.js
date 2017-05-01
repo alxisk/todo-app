@@ -14,6 +14,7 @@ class App extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   handleSubmit(event) {
@@ -28,13 +29,22 @@ class App extends React.Component {
     event.target.entry.value = '';
   }
 
+  handleRemove(event) {
+    event.preventDefault();
+    let id = event.target.getAttribute('data-id')
+    this.setState(prevState => {
+      return {entries: prevState.entries.filter((item) => item.id != id)};
+    });
+  }
+
   render() {
     return (
       <div className="app">
         <div className="center-wrap app__center-wrap">
           <AppTitle title={'Simple todo app'} />
           <InputForm onsubmit={this.handleSubmit} />
-          <TodoList entries={this.state.entries} taskCount={this.state.entries.length} />
+          <TodoList entries={this.state.entries}
+            handleRemove={this.handleRemove} taskCount={this.state.entries.length} />
         </div>
       </div>
     );
