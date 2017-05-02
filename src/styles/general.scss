@@ -22,10 +22,19 @@ a {
   color: inherit;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px white;
+}
+
 .center-wrap {
   padding: 0 15px;
   margin: 0 auto;
-  max-width: 1200px;
+  width: 80%;
+  max-width: 600px;
+
+  @media #{$mq-sm} {
+    width: 100%;
+  }
 }
 
 .btn {

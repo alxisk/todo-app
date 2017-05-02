@@ -6,7 +6,11 @@
   }
 
   &__tasks-count {
-    font-size: 20px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: left;
   }
 
   &__list-item {
@@ -14,11 +18,11 @@
     margin: 0 auto;
     margin-bottom: 5px;
     padding-left: 15px;
-    padding-right: 90px;
-    width: 500px;
+    padding-right: 85px;
+    width: 100%;
     font-family: $font-main;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 18px;
     border: 1px solid $lightgrey;
     border-radius: 25px;
     color: black;
@@ -33,7 +37,10 @@
 
   &__btns {
     position: absolute;
-    top: 6px;
+    margin-top: -15px;
+    width: 65px;
+    height: 0;
+    top: 50%;
     right: 7px;
   }
 
@@ -43,7 +50,7 @@
     margin-right: 5px;
     width: 30px;
     height: 30px;
-    border: 1px solid $lightgrey;
+    // border: 1px solid $lightgrey;
     border-radius: 50%;
 
     &:last-child {

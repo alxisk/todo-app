@@ -1,12 +1,12 @@
 .input-form {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   & input[name="entry"] {
-    flex: 0 1 36%;
+    flex: 0 1 82%;
     margin-right: 2%;
-    padding: 10px 15px;
+    padding: 8px 15px;
     font-family: $font-main;
     font-size: 16px;
     line-height: 16px;
@@ -22,7 +22,7 @@
 
   &__btn {
     position: relative;
-    flex: 0 1 auto;
+    flex: 0 1 10%;
     padding-left: 30px;
     padding-right: 10px;
     font-family: $font-main;
@@ -32,7 +32,7 @@
 
     &:after {
       position: absolute;
-      top: 9px;
+      top: 7px;
       left: 10px;
       content: '\ea0a';
       font-family: 'icomoon';
