@@ -9,7 +9,9 @@ export default function TodoList(props) {
       <ul className="todo-list__list">
         {props.entries.map(entry =>
           <ListItem key={entry.id} id={entry.id} text={entry.text}
-            handleRemove={props.handleRemove}/>)}
+            handleRemove={props.handleRemove}
+            handleEdit={props.handleEdit}
+            handleApplyEdit={props.handleApplyEdit} />)}
       </ul>
     </div>
   );

@@ -9,12 +9,20 @@ class App extends React.Component {
     this.state = {
       entries: [{
         id: 1,
-        text: 'blablabla'
+        text: "Call someone to tell them you can't talk right now"
+      },
+      {
+        id: 2,
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. \
+          Doloremque sequi totam culpa! Consequatur excepturi pariatur, \
+          eaque labore velit odio rem."
       }]
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleApplyEdit = this.handleApplyEdit.bind(this);
   }
 
   handleSubmit(event) {
@@ -32,10 +40,32 @@ class App extends React.Component {
 
   handleRemove(event) {
     event.preventDefault();
-    let id = event.target.getAttribute('data-id')
+    const id = event.target.parentNode.getAttribute('data-id')
     this.setState(prevState => {
       return {entries: prevState.entries.filter((item) => item.id != id)};
     });
+  }
+
+  handleEdit(event) {
+    event.preventDefault();
+    const msgContainer = event.target.parentNode.parentNode.firstElementChild;
+    msgContainer.contentEditable = 'true';
+    msgContainer.focus();
+    event.target.parentNode.firstElementChild.classList.remove('btn--hidden');
+    event.target.classList.add('btn--hidden');
+  }
+
+  handleApplyEdit(event) {
+    event.preventDefault();
+    const id = event.target.parentNode.getAttribute('data-id');
+    const msgContainer = event.target.parentNode.parentNode.firstElementChild;
+    const entryIdx = this.state.entries.findIndex(item => item.id == id);
+    this.setState(prevState => {
+      prevState.entries[entryIdx].text = msgContainer.textContent;
+    });
+    msgContainer.contentEditable = 'false';
+    event.target.classList.add('btn--hidden');
+    event.target.parentNode.children[1].classList.remove('btn--hidden');
   }
 
   render() {
@@ -45,7 +75,10 @@ class App extends React.Component {
           <AppTitle title={'Simple todo app'} />
           <InputForm onsubmit={this.handleSubmit} />
           <TodoList entries={this.state.entries}
-            handleRemove={this.handleRemove} taskCount={this.state.entries.length} />
+            handleRemove={this.handleRemove}
+            handleEdit={this.handleEdit}
+            handleApplyEdit={this.handleApplyEdit}
+            taskCount={this.state.entries.length} />
         </div>
       </div>
     );

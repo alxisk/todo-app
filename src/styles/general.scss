@@ -33,6 +33,10 @@ a {
   border-radius: 10px;
   outline: none;
 
+  &--hidden {
+    display: none;
+  }
+
   &--green {
     border: 1px solid $green;
     background: lighten($green, 35%);
