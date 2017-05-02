@@ -7,11 +7,11 @@ export default function ListItem(props) {
       <p>{props.text}</p>
       <div className="todo-list__btns" data-id={props.id}>
         <button className="btn btn--green btn--hidden todo-list__btn"
-          onClick={props.handleApplyEdit}>A</button>
+          onClick={props.handleApplyEdit}></button>
         <button className="btn btn--blue todo-list__btn"
-          onClick={props.handleEdit}>E</button>
+          onClick={props.handleEdit}></button>
         <button className="btn btn--red todo-list__btn"
-          onClick={props.handleRemove}>R</button>
+          onClick={props.handleRemove}></button>
       </div>
     </li>
   );

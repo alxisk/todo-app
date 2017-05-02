@@ -21,11 +21,23 @@
   }
 
   &__btn {
+    position: relative;
     flex: 0 1 auto;
-    padding: 0 11px;
+    padding-left: 30px;
+    padding-right: 10px;
     font-family: $font-main;
     font-size: 20px;
     line-height: 24px;
-    color: $text-black;
+    color: darken($green, 30%);
+
+    &:after {
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      content: '\ea0a';
+      font-family: 'icomoon';
+      font-size: 14px;
+      color: darken($green, 20%);
+    }
   }
 }

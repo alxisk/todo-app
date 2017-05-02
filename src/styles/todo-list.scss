@@ -33,17 +33,46 @@
 
   &__btns {
     position: absolute;
-    top: 8px;
-    right: 12px;
+    top: 6px;
+    right: 7px;
   }
 
   &__btn {
+    position: relative;
     padding: 5px 10px;
     margin-right: 5px;
+    width: 30px;
+    height: 30px;
     border: 1px solid $lightgrey;
+    border-radius: 50%;
 
     &:last-child {
       margin-right: 0;
+    }
+
+    &:nth-child(1):after,
+    &:nth-child(2):after,
+    &:nth-child(3):after {
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      font-family: 'icomoon';
+      font-size: 15px;
+    }
+
+    &:nth-child(1):after {
+      content: '\ea10';
+      color: darken($green, 25%);
+    }
+
+    &:nth-child(2):after {
+      content: '\e905';
+      color: darken($blue, 25%);
+    }
+
+    &:nth-child(3):after {
+      content: '\e9ac';
+      color: darken($red, 25%);
     }
   }
 }

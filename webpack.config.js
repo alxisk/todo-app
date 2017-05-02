@@ -30,6 +30,19 @@ const config = {
         ]
       },
       {
+        test: /\.(png|jpg|ttf|eot|woff|woff2|svg)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: '10000',
+              name: 'assets/[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
