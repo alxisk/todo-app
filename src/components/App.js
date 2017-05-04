@@ -1,8 +1,10 @@
 import React from 'react';
+import { arrayMove } from 'react-sortable-hoc';
 import AppTitle from './AppTitle';
 import InputForm from './InputForm';
 import TodoList from './TodoList';
-import {arrayMove} from 'react-sortable-hoc';
+import { getId, getMsgContainer, getEntryIdx,
+        makeEditable, makeUneditable } from '../utils';
 
 class App extends React.Component {
   constructor() {
@@ -14,12 +16,14 @@ class App extends React.Component {
       },
       {
         id: 1,
-        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. \
-          Doloremque sequi totam culpa! Consequatur excepturi pariatur, \
-          eaque labore velit odio rem."
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sequi totam culpa! Consequatur excepturi pariatur, eaque labore velit odio rem.'
+      },
+      {
+        id: 2,
+        text: 'Tip: You can sort list items by dragging them'
       }],
-      lastId: 1,
-      lastEditableContainer: null
+      lastId: 2,
+      lastEditable: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,54 +39,50 @@ class App extends React.Component {
     const entryText = event.target.entry.value;
     event.target.entry.value = '';
     if (!entryText.trim()) return;
-    const entries = this.state.entries;
     const newEntryId = this.state.lastId + 1;
     this.setState(prevState =>
       prevState.entries.push({ id: newEntryId, text: entryText })
     );
-    this.setState({lastId: newEntryId});
+    this.setState({ lastId: newEntryId });
   }
 
   handleRemove(event) {
     event.preventDefault();
-    const id = event.target.parentNode.getAttribute('data-id')
-    this.setState(prevState => {
-      return {entries: prevState.entries.filter((item) => item.id != id)};
-    });
+    const id = getId(event.target);
+    const newEntries = this.state.entries.filter(item => item.id !== +id);
+    this.setState({ entries: newEntries });
   }
 
   handleEdit(event) {
     event.preventDefault();
-    const msgContainer = event.target.parentNode.parentNode.firstElementChild;
-    msgContainer.contentEditable = 'true';
-    msgContainer.focus();
-    event.target.parentNode.firstElementChild.classList.remove('btn--hidden');
-    event.target.classList.add('btn--hidden');
+    makeEditable(event.target);
 
-    if (this.state.lastEditableContainer) {
-      this.state.lastEditableContainer.contentEditable = "false";
+    if (this.state.lastEditable &&
+        this.state.lastEditable !== event.target.previousElementSibling) {
+      this.applyEdit(event.target.previousElementSibling);
+      makeUneditable(this.state.lastEditable);
     }
 
-    this.setState({lastEditableContainer: msgContainer});
-    console.log(this.state.lastEditableContainer);
+    this.setState({ lastEditable: event.target.previousElementSibling });
   }
 
   handleApplyEdit(event) {
     event.preventDefault();
-    const id = event.target.parentNode.getAttribute('data-id');
-    const msgContainer = event.target.parentNode.parentNode.firstElementChild;
-    const entryIdx = this.state.entries.findIndex(item => item.id == id);
-    this.setState(prevState => {
-      prevState.entries[entryIdx].text = msgContainer.textContent;
-    });
-    msgContainer.contentEditable = 'false';
-    event.target.classList.add('btn--hidden');
-    event.target.parentNode.children[1].classList.remove('btn--hidden');
+    this.applyEdit(event.target);
+    makeUneditable(event.target);
   }
 
-  handleSortEnd({oldIndex, newIndex}) {
+  handleSortEnd({ oldIndex, newIndex }) {
     this.setState({
       entries: arrayMove(this.state.entries, oldIndex, newIndex)
+    });
+  }
+
+  applyEdit(target) {
+    const msgContainer = getMsgContainer(target);
+    const entryIdx = getEntryIdx(this.state.entries, getId(target));
+    this.setState((prevState) => {
+      prevState.entries[entryIdx].text = msgContainer.textContent;
     });
   }
 
@@ -92,13 +92,15 @@ class App extends React.Component {
         <div className="center-wrap app__center-wrap">
           <AppTitle title={'Simple todo app'} />
           <InputForm onsubmit={this.handleSubmit} />
-          <TodoList entries={this.state.entries}
+          <TodoList
+            entries={this.state.entries}
             handleRemove={this.handleRemove}
             handleEdit={this.handleEdit}
             handleApplyEdit={this.handleApplyEdit}
             onSortEnd={this.handleSortEnd}
             distance="5"
-            taskCount={this.state.entries.length} />
+            taskCount={this.state.entries.length}
+          />
         </div>
       </div>
     );
