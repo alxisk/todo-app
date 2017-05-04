@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {SortableElement} from 'react-sortable-hoc';
 
-export default function ListItem(props) {
+const ListItem = SortableElement((props) => {
   return (
     <li className="todo-list__list-item">
       <p>{props.text}</p>
@@ -15,7 +16,9 @@ export default function ListItem(props) {
       </div>
     </li>
   );
-}
+});
+
+export default ListItem;
 
 ListItem.propTypes = {
   text: PropTypes.string.isRequired
