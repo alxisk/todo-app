@@ -98,7 +98,7 @@ class App extends React.Component {
             handleEdit={this.handleEdit}
             handleApplyEdit={this.handleApplyEdit}
             onSortEnd={this.handleSortEnd}
-            distance="5"
+            pressDelay="60"
             taskCount={this.state.entries.length}
           />
         </div>
